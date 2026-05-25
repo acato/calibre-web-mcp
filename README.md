@@ -1,5 +1,7 @@
 # calibre-web-mcp
 
+[![tests](https://github.com/acato/calibre-web-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/acato/calibre-web-mcp/actions/workflows/test.yml)
+
 An MCP (Model Context Protocol) server for **[Calibre-Web](https://github.com/janeczku/calibre-web)** — the web frontend for Calibre libraries.
 
 Unlike existing Calibre MCP servers (which target the Calibre Content Server, `calibredb` CLI, or `metadata.db` directly), this one talks to **Calibre-Web's own routes** so it can manage **shelves** — a Calibre-Web concept that doesn't exist in plain Calibre.
