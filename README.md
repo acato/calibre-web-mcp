@@ -27,19 +27,13 @@ This server intentionally does **not** write metadata (use `calibredb` for that 
 
 ## Install
 
-Requires Python 3.11+.
-
-```bash
-uvx calibre-web-mcp                  # one-shot run (recommended)
-# or
-pip install calibre-web-mcp          # once published to PyPI
-```
-
-For now, install directly from this repo:
+Requires Python 3.11+. Install directly from GitHub:
 
 ```bash
 uvx --from git+https://github.com/acato/calibre-web-mcp calibre-web-mcp
 ```
+
+> Not yet on PyPI — `uvx calibre-web-mcp` / `pip install calibre-web-mcp` will work once published.
 
 ## Configure
 
@@ -57,7 +51,8 @@ The MCP logs in with CSRF + session cookie just like a browser; it does not need
 ## Use with Claude Code
 
 ```bash
-claude mcp add --scope user calibre-web -- uvx calibre-web-mcp
+claude mcp add --scope user calibre-web -- \
+  uvx --from git+https://github.com/acato/calibre-web-mcp calibre-web-mcp
 ```
 
 Then edit `~/.claude.json` to add env vars under the server entry (the `claude mcp add -e` flag is currently buggy for multi-env-var setups — see Claude Code issue tracker):
@@ -66,7 +61,7 @@ Then edit `~/.claude.json` to add env vars under the server entry (the `claude m
 "calibre-web": {
   "type": "stdio",
   "command": "uvx",
-  "args": ["calibre-web-mcp"],
+  "args": ["--from", "git+https://github.com/acato/calibre-web-mcp", "calibre-web-mcp"],
   "env": {
     "CALIBRE_WEB_URL": "http://10.0.0.5:8083",
     "CALIBRE_WEB_USER": "admin",
@@ -84,7 +79,7 @@ In `claude_desktop_config.json`:
   "mcpServers": {
     "calibre-web": {
       "command": "uvx",
-      "args": ["calibre-web-mcp"],
+      "args": ["--from", "git+https://github.com/acato/calibre-web-mcp", "calibre-web-mcp"],
       "env": {
         "CALIBRE_WEB_URL": "http://10.0.0.5:8083",
         "CALIBRE_WEB_USER": "admin",
