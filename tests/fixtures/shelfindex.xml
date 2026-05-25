@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcterms="http://purl.org/dc/terms/">
+  <id>urn:uuid:00000000-0000-0000-0000-000000000000</id>
+  <title>Calibre-Web</title>
+  <updated>2026-05-25T00:00:00+00:00</updated>
+  <entry>
+    <title>Accounting (Public)</title>
+    <id>/opds/shelf/1</id>
+    <link rel="subsection" type="application/atom+xml;profile=opds-catalog" href="/opds/shelf/1"/>
+  </entry>
+  <entry>
+    <title>Personal Notes</title>
+    <id>/opds/shelf/7</id>
+    <link rel="subsection" type="application/atom+xml;profile=opds-catalog" href="/opds/shelf/7"/>
+  </entry>
+  <entry>
+    <title>Comics-Eros</title>
+    <id>/opds/shelf/25</id>
+    <link rel="subsection" type="application/atom+xml;profile=opds-catalog" href="/opds/shelf/25"/>
+  </entry>
+</feed>

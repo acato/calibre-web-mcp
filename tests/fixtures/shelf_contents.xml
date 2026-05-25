@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/terms/" xmlns:dcterms="http://purl.org/dc/terms/">
+  <id>urn:uuid:11111111-1111-1111-1111-111111111111</id>
+  <title>Calibre-Web</title>
+  <updated>2026-05-25T00:00:00+00:00</updated>
+  <entry>
+    <title>Sample Book One</title>
+    <id>urn:uuid:b1</id>
+    <updated>2026-04-12T07:25:49+00:00</updated>
+    <author><name>Doe, Jane</name></author>
+    <author><name>Roe, John</name></author>
+    <publisher><name>Acme Press</name></publisher>
+    <published>2024-01-15T00:00:00+00:00</published>
+    <dcterms:language>eng</dcterms:language>
+    <category scheme="http://www.bisg.org/standards/bisac_subject/index.html" term="Fiction" label="Fiction"/>
+    <summary>A summary of the first book.</summary>
+    <link rel="http://opds-spec.org/image" type="image/jpeg" href="/opds/cover/100"/>
+    <link rel="http://opds-spec.org/image/thumbnail" type="image/jpeg" href="/opds/cover/100"/>
+    <link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="/opds/download/100/epub/"/>
+    <link rel="http://opds-spec.org/acquisition" type="application/pdf" href="/opds/download/100/pdf/"/>
+  </entry>
+  <entry>
+    <title>Sample Book Two (no cover, no formats)</title>
+    <id>urn:uuid:b2</id>
+    <updated>2026-04-12T07:25:49+00:00</updated>
+    <author><name>Solo, Han</name></author>
+    <dcterms:language>eng</dcterms:language>
+  </entry>
+</feed>

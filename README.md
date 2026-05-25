@@ -110,9 +110,25 @@ For *metadata* writes, still use `calibredb`. (Calibre-Web's metadata-edit endpo
 
 ## Known gaps / version compatibility
 
-- HTML selectors target Calibre-Web's default theme. If you use a custom theme that renames classes, `list_shelves` / `get_shelf_contents` may return empty results.
-- `set_shelf_public` re-reads the current title via the edit form to avoid clobbering. If your Calibre-Web build has reworked `/shelf/edit/<id>`, this tool will need updating.
-- 2FA isn't supported (Calibre-Web doesn't ship 2FA in stock; if your reverse proxy enforces it, use an API/token-aware proxy instead).
+- **Reads use OPDS**, which has a stable schema across recent Calibre-Web versions. Writes use the HTML routes (`/shelf/create`, `/shelf/edit/<id>`, etc.) — if your build has reworked these, the write tools will need updating.
+- **Broad search queries are slow.** Calibre-Web's `/opds/search/<term>` returns *every* matching book in a single Atom feed with no server-side pagination; a query like `"a"` against a 4000-book library is multi-MB and can wedge the container if your timeout is short. Use specific terms and adjust `httpx` timeouts if needed. An empty query is rejected client-side.
+- `set_shelf_public` re-reads the current title via the edit form to avoid clobbering. Bug fixed in v0.1.0a0 where the regex didn't tolerate `id="title"` between `name="title"` and `value="..."`.
+- **2FA isn't supported.** Calibre-Web doesn't ship 2FA in stock; if your reverse proxy enforces it, use an API/token-aware proxy instead.
+
+## Development
+
+```bash
+git clone https://github.com/acato/calibre-web-mcp
+cd calibre-web-mcp
+uv sync --dev
+uv run pytest                   # unit tests (no network)
+CALIBRE_WEB_TEST_URL=http://your-cw:8083 \
+CALIBRE_WEB_TEST_USER=admin \
+CALIBRE_WEB_TEST_PASS=... \
+  uv run pytest                 # incl. integration tests against a live CW
+```
+
+Integration tests create `pytest-cw-mcp-DELETEME-*` shelves and clean them up; they do not modify existing shelves or books.
 
 ## License
 

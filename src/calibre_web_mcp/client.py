@@ -194,8 +194,16 @@ class CalibreWebClient:
         return {"id": shelf_id, "books": [_book_to_dict(b) for b in books], "count": len(books)}
 
     def search_books(self, query: str, limit: int = 50) -> list[Book]:
-        # OPDS search expects the term in the path; URL-encode anything risky
-        safe = httpx.QueryParams({"q": query})["q"]  # cheap quote
+        """Search books via OPDS.
+
+        WARNING: Calibre-Web's `/opds/search/<term>` returns ALL matching books in
+        a single Atom feed with no server-side pagination. For very broad terms
+        against a large library this can be multi-MB and multi-second. Pass a
+        specific query and consider the timeout you set on the client.
+        """
+        if not query or not query.strip():
+            raise ValueError("search_books: query must be non-empty")
+        safe = httpx.QueryParams({"q": query})["q"]
         feed = self._opds(f"/opds/search/{safe}")
         out: list[Book] = []
         for entry in feed.findall("atom:entry", OPDS_NS):

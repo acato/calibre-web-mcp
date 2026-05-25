@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Login</title></head>
+<body>
+<form method="POST" action="/login">
+  <input type="hidden" name="next" value="/">
+  <input type="hidden" name="csrf_token" value="LOGIN_CSRF_TOKEN_VALUE">
+  <input type="text" name="username" value="">
+  <input type="password" name="password" value="">
+  <input type="checkbox" name="remember_me" checked>
+  <button type="submit" name="submit">Login</button>
+</form>
+</body>
+</html>
