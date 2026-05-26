@@ -6,7 +6,7 @@ An MCP (Model Context Protocol) server for **[Calibre-Web](https://github.com/ja
 
 Unlike existing Calibre MCP servers (which target the Calibre Content Server, `calibredb` CLI, or `metadata.db` directly), this one talks to **Calibre-Web's own routes** so it can manage **shelves** — a Calibre-Web concept that doesn't exist in plain Calibre.
 
-> **Status:** v0.1.0-alpha. HTML-parsing selectors are best-effort against Calibre-Web's stock theme; please [open an issue](../../issues) if anything breaks on your install.
+> **Status:** beta. 11 tools across shelves/books/search, 18 unit + integration tests passing, API stable, in production against a multi-thousand-book Calibre-Web instance. HTML-parsing selectors are best-effort against Calibre-Web's stock theme; please [open an issue](../../issues) if anything breaks on your install.
 
 ## What it gives you
 
